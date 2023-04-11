@@ -1,0 +1,19 @@
+.select {
+  padding: 20px;
+  border-radius: 30px;
+  background-color: #fff;
+
+  &__btn {
+    font-size: 20px;
+    line-height: 1.2;
+    padding: 10px 5px;
+    text-align: left;
+    background-color: #fff;
+    border: none;
+    width: 100%;
+    border-bottom: 1px solid #e3e3e3;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+  }
+}
