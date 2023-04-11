@@ -45,7 +45,7 @@ export class CurrenciesService {
         this.data = [];
         this.loading = true;
         this.serverData = res;
-        this.actualDateGet = this.formatDate(res.Date);
+        this.actualDateGet = this.formatDate(res.Timestamp);
         list.forEach((item: string) => {
           const newEl = {
             ...this.serverData.Valute[item],
