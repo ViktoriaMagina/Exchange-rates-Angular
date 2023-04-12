@@ -3,27 +3,47 @@
     <div class="main-wrapper__header">
       <h1 class="title">Currency RUB</h1>
       <button class="open-dialog-currencies" (click)="openDialog()">
-        <img width="30" height="30" src="../assets/1491254405-plusaddmoredetail_82972.svg" alt="open more">
+        <img
+          width="30"
+          height="30"
+          src="../assets/1491254405-plusaddmoredetail_82972.svg"
+          alt="open more"
+        />
       </button>
     </div>
-    <p *ngIf="!currenciesService.loading">Последнее обновление: {{this.currenciesService.actualDateGet}}</p>
+    <p *ngIf="!currenciesService.loading">
+      Последнее обновление: {{ this.currenciesService.actualDateGet }}
+    </p>
     <mat-list>
       <mat-list-item *ngFor="let item of currenciesService.data" class="item">
         <mat-card>
           <mat-card-header>
             <mat-card-title-group>
-              <mat-card-title class="item__name">{{ item.CharCode }}</mat-card-title>
+              <mat-card-title class="item__name">{{
+                item.CharCode
+              }}</mat-card-title>
               <div class="item__box">
                 <div class="item__num">{{ item.Value }}</div>
-                <img class="item__arr" [attr.src]="item.Difference > 0 ? '../assets/slide-up.png' : '../assets/slide-down.png'"/>
-                <div [class.minus]="item.Difference < 0" class="item__def">{{ item.Difference }}</div>
+                <img
+                  class="item__arr"
+                  [attr.src]="
+                    item.Difference > 0
+                      ? '../assets/slide-up.png'
+                      : '../assets/slide-down.png'
+                  "
+                />
+                <div [class.minus]="item.Difference < 0" class="item__def">
+                  {{ item.Difference }}
+                </div>
               </div>
             </mat-card-title-group>
           </mat-card-header>
         </mat-card>
       </mat-list-item>
-      <mat-progress-bar *ngIf="currenciesService.loading" mode="query"></mat-progress-bar>
+      <mat-progress-bar
+        *ngIf="currenciesService.loading"
+        mode="query"
+      ></mat-progress-bar>
     </mat-list>
   </div>
-
 </div>

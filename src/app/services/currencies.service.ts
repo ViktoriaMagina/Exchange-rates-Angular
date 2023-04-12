@@ -4,20 +4,19 @@ import { catchError, interval } from 'rxjs';
 import { delay, EMPTY } from 'rxjs';
 
 interface dateObjValute {
-  ID: string,
-  NumCode: string,
-  CharCode: string,
-  Nominal: number,
-  Name: string,
-  Value: number,
-  Previous: number,
-  Difference: number
+  ID: string;
+  NumCode: string;
+  CharCode: string;
+  Nominal: number;
+  Name: string;
+  Value: number;
+  Previous: number;
+  Difference: number;
 }
 
 @Injectable({
   providedIn: 'root',
 })
-
 export class CurrenciesService {
   serverData: any;
   data: dateObjValute[] = [];
@@ -41,7 +40,6 @@ export class CurrenciesService {
         })
       )
       .subscribe((res: any) => {
-        console.log(res)
         this.data = [];
         this.loading = true;
         this.serverData = res;
