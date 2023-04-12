@@ -25,12 +25,7 @@ export class CurrenciesService {
   constructor(private http: HttpClient) {}
   getItems(list: string[]) {
     this.http
-      .get(`https://www.cbr-xml-daily.ru/daily_json.js?`,{
-        headers: new HttpHeaders({
-          'Cache-Control': 'no-cache',
-          'Pragma': 'no-cache',
-        })
-      })
+      .get(`https://www.cbr-xml-daily.ru/daily_json.js?`)
       .pipe(
         delay(800),
         catchError((error: HttpErrorResponse) => {
