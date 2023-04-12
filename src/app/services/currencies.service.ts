@@ -24,9 +24,13 @@ export class CurrenciesService {
   loading: boolean = true;
   constructor(private http: HttpClient) {}
   getItems(list: string[]) {
-    const salt = (new Date()).getTime();
     this.http
-      .get(`https://www.cbr-xml-daily.ru/daily_json.js?${salt}`)
+      .get(`https://www.cbr-xml-daily.ru/daily_json.js?`,{
+        headers: new HttpHeaders({
+          'Cache-Control': 'no-cache',
+          'Pragma': 'no-cache',
+        })
+      })
       .pipe(
         delay(800),
         catchError((error: HttpErrorResponse) => {
