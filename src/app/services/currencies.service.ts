@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, interval } from 'rxjs';
 import { delay, EMPTY } from 'rxjs';
@@ -24,8 +24,9 @@ export class CurrenciesService {
   loading: boolean = true;
   constructor(private http: HttpClient) {}
   getItems(list: string[]) {
+    const salt = (new Date()).getTime();
     this.http
-      .get(`https://www.cbr-xml-daily.ru/daily_json.js`)
+      .get(`https://www.cbr-xml-daily.ru/daily_json.js?${salt}`)
       .pipe(
         delay(800),
         catchError((error: HttpErrorResponse) => {
@@ -40,6 +41,7 @@ export class CurrenciesService {
         })
       )
       .subscribe((res: any) => {
+        console.log(res)
         this.data = [];
         this.loading = true;
         this.serverData = res;
